@@ -7,7 +7,7 @@ pipeline:
     image: golang:latest
     commands:
       - go get -v
-      - go build -o main *.go
+      - CGO_ENABLED=0 go build -o main *.go
   publish:
     image: plugins/docker
     repo: registry.nfsmith.ca/ising
