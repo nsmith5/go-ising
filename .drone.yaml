@@ -1,0 +1,16 @@
+workspace:
+  base: /go
+  path: src/github.com/octocat/hello-world
+
+pipeline:
+  build:
+    image: golang:latest
+    commands:
+      - go get
+      - go build -o main *.go
+  publish:
+    image: plugins/docker
+    repo: registry.nfsmith.ca/ising
+    registry: registry.nfsmith.ca
+    auto_tag: true
+    secrets: [docker_username, docker_password]
