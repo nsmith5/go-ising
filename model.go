@@ -4,10 +4,12 @@ import (
 	"errors"
 	"math"
 	"math/rand"
+	"sync"
 	"time"
 )
 
 type Model struct {
+	sync.Mutex
 	Alpha float64
 	Beta  float64
 
@@ -38,6 +40,9 @@ func NewModel(N int) (*Model, error) {
 }
 
 func (m *Model) Step() {
+	m.Lock()
+	defer m.Unlock()
+
 	// Compute the change in energy from a flip at each site
 	for i := 0; i < m.n; i++ {
 		for j := 0; j < m.n; j++ {

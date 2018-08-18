@@ -7,6 +7,9 @@ import (
 )
 
 func (m *Model) String() string {
+	m.Lock()
+	defer m.Unlock()
+
 	var b bytes.Buffer
 	for i := 0; i < m.n; i++ {
 		for j := 0; j < m.n; j++ {
@@ -22,6 +25,9 @@ func (m *Model) String() string {
 }
 
 func (m *Model) Image() image.Image {
+	m.Lock()
+	defer m.Unlock()
+
 	img := image.NewRGBA(image.Rect(0, 0, m.n, m.n))
 	for i := 0; i < m.n; i++ {
 		for j := 0; j < m.n; j++ {
