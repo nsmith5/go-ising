@@ -32,9 +32,9 @@ func (m *Model) Image() image.Image {
 	for i := 0; i < m.n; i++ {
 		for j := 0; j < m.n; j++ {
 			if m.l[i][j] > 0 {
-				img.Set(i, j, color.Black)
+				img.Set(i, j, color.RGBA{68, 68, 68, 255})
 			} else {
-				img.Set(i, j, color.RGBA{255, 255, 255, 0})
+				img.Set(i, j, color.RGBA{255, 255, 249, 255})
 			}
 		}
 	}
