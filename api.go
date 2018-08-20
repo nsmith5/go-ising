@@ -42,4 +42,6 @@ func (m *Model) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 		m.Beta = beta
 		log.Println("Beta modified to", m.Beta)
 	}
+  	
+  	w.Header().Set("Access-Control-Allow-Origin", "*.nfsmith.ca")
 }
