@@ -5,7 +5,7 @@ steps:
 - name: build
   image: golang
   commands:
-  - go get -v
+  - go get code.nfsmith.ca/nsmith/mjpeg
   - CGO_ENABLED=0 go build -o main *.go
 - name: publish
   image: plugins/docker
