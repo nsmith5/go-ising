@@ -8,6 +8,7 @@ import (
 	"time"
 )
 
+// Model is an Ising model
 type Model struct {
 	sync.Mutex
 	Alpha float64
@@ -18,6 +19,7 @@ type Model struct {
 	n  int     // Lattice size (n x n)
 }
 
+// NewModel returns a NxN Ising model
 func NewModel(N int) (*Model, error) {
 	if !powerOfTwo(N) {
 		return nil, errors.New("Model must have dimension power of 2")
@@ -39,6 +41,7 @@ func NewModel(N int) (*Model, error) {
 	return &m, nil
 }
 
+// Step advances the Ising Model by one Metropolis step.
 func (m *Model) Step() {
 	m.Lock()
 	defer m.Unlock()
@@ -73,6 +76,7 @@ func (m *Model) Step() {
 	return
 }
 
+// Run steps the model once per 100 ms for ever.
 func (m *Model) Run() {
 	go func() {
 		for {
@@ -82,6 +86,7 @@ func (m *Model) Run() {
 	}()
 }
 
+// powerOfTwo checks if a number is a power of two or not.
 func powerOfTwo(n int) bool {
 	if n <= 0 {
 		return false

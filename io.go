@@ -24,6 +24,7 @@ func (m *Model) String() string {
 	return b.String()
 }
 
+// Image renders a black and white image of the Ising model state.
 func (m *Model) Image() image.Image {
 	m.Lock()
 	defer m.Unlock()
