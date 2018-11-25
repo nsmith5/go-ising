@@ -11,6 +11,7 @@ func main() {
 		panic(err)
 	}
 
+	// Run the model for ever
 	m.Run()
 
 	mux := http.NewServeMux()
