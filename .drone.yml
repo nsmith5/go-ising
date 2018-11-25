@@ -10,7 +10,10 @@ steps:
 - name: publish
   image: plugins/docker
   settings:
+    username:
+      from_secret: docker_username
+    password:
+      from_secret: docker_password
     repo: registry.nfsmith.ca/ising
     registry: registry.nfsmith.ca
     auto_tag: true
-    secrets: [docker_username, docker_password]
