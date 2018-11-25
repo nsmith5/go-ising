@@ -9,6 +9,8 @@ steps:
   - CGO_ENABLED=0 go build -o main *.go
 - name: publish
   image: plugins/docker
-  repo: registry.nfsmith.ca
-  auto_tag: true
-  secrets: [docker_username, docker_password]
+  settings:
+    repo: registry.nfsmith.ca/ising
+    registry: registry.nfsmith.ca
+    auto_tag: true
+    secrets: [docker_username, docker_password]
