@@ -16,5 +16,7 @@ func main() {
 
 	mux := http.NewServeMux()
 	mux.Handle("/", m)
+
+	log.Println("Server binding to :8080...")
 	log.Fatal(http.ListenAndServe(":8080", mux))
 }

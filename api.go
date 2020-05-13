@@ -10,16 +10,16 @@ import (
 	"strconv"
 	"time"
 
-	"code.nfsmith.ca/nsmith/mjpeg"
+	"github.com/nsmith5/mjpeg"
 )
 
 func (m *Model) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	switch r.Method {
 	case "GET":
 		handler := mjpeg.Handler{
-			Stream: func() image.Image {
+			Next: func() (image.Image, error) {
 				time.Sleep(100 * time.Millisecond)
-				return m.Image()
+				return m.Image(), nil
 			},
 			Options: &jpeg.Options{Quality: 100},
 		}
